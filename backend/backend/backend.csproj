@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.26" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Position.Module.API\" />
+    <Folder Include="Position.Module.BLL\" />
+    <Folder Include="Position.Module.DAL\Interface\" />
   </ItemGroup>
 
 </Project>
