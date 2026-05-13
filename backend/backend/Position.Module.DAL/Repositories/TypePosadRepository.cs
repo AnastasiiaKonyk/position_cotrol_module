@@ -8,7 +8,6 @@ namespace backend.Position.Module.DAL.Repositories.Interface
 
         public TypePosadRepository(TypePosadDbContext context) : base(context) { }
 
-        // 1. Отримати список з пагінацією та фільтром
         public async Task<(IEnumerable<TypePosad> Items, int TotalCount)> GetPagedAsync(
             bool includeArchive,
             int pageNumber,
@@ -18,7 +17,7 @@ namespace backend.Position.Module.DAL.Repositories.Interface
         {
             var query = _dbSet.AsQueryable();
 
-            // Фільтрація: якщо не включаємо архівні, беремо лише Active = true
+            // Фільтрація архівованих
             if (!includeArchive)
             {
                 query = query.Where(x => x.Active);
@@ -30,7 +29,7 @@ namespace backend.Position.Module.DAL.Repositories.Interface
             query = sortDescending
                 ? query.OrderByDescending(x => x.Id)
                 : query.OrderBy(x => x.Id);
-            // Пагінація: пропускаємо попередні сторінки та беремо розмір поточної
+            // Пагінація
             var items = await query
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
@@ -39,26 +38,23 @@ namespace backend.Position.Module.DAL.Repositories.Interface
             return (items, totalCount);
         }
 
-        // 2. Створення запису
-        public async Task<int> CreateTypePosad(TypePosad entity)
+        public async Task<int> CreateAsync(TypePosad entity)
         {
-            // Логіка Active_BOS = active_AD згідно з ТЗ
             entity.Active_BOS = entity.Active_AD;
-            entity.Active = true; // Дефолтне значення
+            entity.Active = true;
 
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity.Id;
         }
 
-        // 3. Редагування запису
-        public async Task<bool> UpdateTypePosad(TypePosad entity)
+        public async Task<bool> UpdateAsync(TypePosad entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             return await _context.SaveChangesAsync() > 0;
         }
 
-        // 4. Перевірка наявності активних посад перед архівуванням
+        // Перевірка наявності активних посад перед архівуванням
         //public async Task<bool> HasActivePosad(int typePosadId)
         //{
         //    // Використовуємо SQL CASE логіку через AnyAsync (ефективний EXISTS)
@@ -69,8 +65,7 @@ namespace backend.Position.Module.DAL.Repositories.Interface
         //                    && p.History == 1);
         //}
 
-        // Зміна статусу Active (Архівування/Розархівування)
-        public async Task<bool> SetStatusPosad(int id, bool active)
+        public async Task<bool> SetStatusAsync(int id, bool active)
         {
             var entity = await _dbSet.FindAsync(id);
             if (entity == null) return false;
@@ -79,8 +74,7 @@ namespace backend.Position.Module.DAL.Repositories.Interface
             return await _context.SaveChangesAsync() > 0;
         }
 
-        // 6. Отримання по ID
-        public async Task<TypePosad?> GetTypePosadById(int id)
+        public async Task<TypePosad?> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }

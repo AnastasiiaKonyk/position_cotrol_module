@@ -1,6 +1,17 @@
+﻿using backend.Position.Module.BLL;
+using backend.Position.Module.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// 1. Реєструємо сервіси DAL (База даних, Репозиторії)
+builder.Services.AddDataAccess(builder.Configuration);
+
+// 2. Реєструємо сервіси BLL (Мапінг, Бізнес-логіка)
+builder.Services.AddBusinessLogic();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
