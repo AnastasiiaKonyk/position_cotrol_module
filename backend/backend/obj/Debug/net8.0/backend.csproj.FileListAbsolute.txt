@@ -147,3 +147,7 @@ D:\Practice\PositionControlModule\backend\backend\obj\Debug\net8.0\refint\backen
 D:\Practice\PositionControlModule\backend\backend\obj\Debug\net8.0\backend.pdb
 D:\Practice\PositionControlModule\backend\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 D:\Practice\PositionControlModule\backend\backend\obj\Debug\net8.0\ref\backend.dll
+D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\AutoMapper.dll
+D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
