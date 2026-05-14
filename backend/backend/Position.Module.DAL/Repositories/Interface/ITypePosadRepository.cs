@@ -12,7 +12,7 @@ namespace backend.Position.Module.DAL.Repositories.Interface
             bool sortDescending);
         Task<int> CreateAsync(TypePosad entity);
         Task<bool> UpdateAsync(TypePosad entity);
-        // Перевірка перед архівуванням (SQL CASE з вашого ТЗ)
+        // Перевірка перед архівуванням 
         //Task<bool> HasActivePosad(int typePosadId);
         Task<bool> SetStatusAsync(int id, bool active);
         Task<TypePosad?> GetByIdAsync(int id);

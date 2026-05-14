@@ -149,5 +149,4 @@ D:\Practice\PositionControlModule\backend\backend\obj\Debug\net8.0\backend.genru
 D:\Practice\PositionControlModule\backend\backend\obj\Debug\net8.0\ref\backend.dll
 D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\AutoMapper.dll
 D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
-D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+D:\Practice\PositionControlModule\backend\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
