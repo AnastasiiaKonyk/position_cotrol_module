@@ -1,0 +1,52 @@
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  border-radius: 15px;
+  padding: 4px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-toggle), 0px 1px 5px 0px #00000040;
+}
+
+/* Стан ВИМКНЕНО (світлий) */
+.off {
+  background-color: var(--toggle-off-bg);
+}
+
+.off .toggle-circle {
+  transform: translateX(0);
+  background-color: var(--gray-light);
+ 
+}
+
+/* Стан УВІМКНЕНО (темний) */
+.on {
+  background-color: var(--toggle-on-bg);
+}
+
+.on .toggle-circle {
+  transform: translateX(20px);
+  background-color: var(--toggle-circle);
+}
+
+.toggle-circle {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s, background-color 0.3s;
+  box-shadow: var(--sds-size-depth-025) var(--sds-size-depth-025) var(--sds-size-depth-100) var(--sds-size-depth-025) var(--sds-color-black-100) inset;
+}
+
+.toggle-label {
+  font-size: 14px;
+  color: var(--text-toggle);
+}

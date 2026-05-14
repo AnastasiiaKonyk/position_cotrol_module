@@ -1,0 +1,57 @@
+.btn {
+  padding: 8px 8px;
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.btn-text {
+  flex: 1;
+  text-align: left;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 13px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--gray-text);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--button-secondary-icon-bg);
+  font-size: 24px;
+  flex-shrink: 0;
+  box-shadow: var(--sds-size-depth-025) var(--sds-size-depth-025) 3.68px var(--sds-size-depth-025) var(--sds-color-black-100) inset;
+
+}
+
+.icon-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.primary {
+  background-color: var(--light-bg);
+  color: var(--text-button);
+  box-shadow: var(--shadow-button);
+}
+
+.primary:hover {
+  background-color: var(--light-hover);
+  box-shadow: var(--shadow-button-hover);
+}

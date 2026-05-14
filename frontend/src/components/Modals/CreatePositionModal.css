@@ -1,0 +1,115 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--modal-overlay-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  gap: 8px;
+  angle: 0 deg;
+  opacity: 1;
+  padding: 16px;
+border-radius: Corner/Large;
+
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: var(--shadow-modal);
+  animation: slideIn 0.3s ease-out;
+  width: 540px;
+  height: 550px;
+
+
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px 0px 16px;
+}
+
+.modal-close {
+  background-color: var(--table-header-bg);
+  box-shadow: var(--shadow-inset-medium);
+  border:none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-close:hover {
+  box-shadow: var(--shadow-inset-hover);
+}
+
+.modal-close img {
+  width: 20px;
+  height: 20px;
+}
+
+.modal-body {
+  padding: 16px;
+  background-color: var(--modal-overlay-bg);
+  width: 508px;
+  height: 460px;
+  gap: 24px;
+  angle: 0 deg;
+  opacity: 1;
+  padding: 16px;
+  border-radius: 16px;
+  margin: 0px 16px 16px 16px;
+
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-dark);
+}
+
+.checkbox-group label {
+  margin: 0;
+  cursor: pointer;
+  color: var(--text-on-input);
+}
+
+.modal-footer {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+}
