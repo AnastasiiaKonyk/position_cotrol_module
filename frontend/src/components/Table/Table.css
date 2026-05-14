@@ -1,0 +1,99 @@
+.modern-table {
+  background-color: var(--table-header-bg);
+  width: 100%;
+  border-collapse: collapse;
+  width: 1272;
+  height: 40;
+  justify-content: space-between;
+  angle: 0 deg;
+  opacity: 1;
+  padding: 8px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+} 
+
+/* Стиль для "острівців" у заголовку */
+.modern-table th {
+  padding: 4px 8px;
+  background: transparent;
+  font-weight: 500;
+  color: var(--black-main);
+  font-size: 14px;
+  text-align: center;
+  border: none;
+}
+
+.th-label {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  padding: 8px 16px;
+  background: var(--table-row-bg);
+  border-radius: 20px;
+}
+
+
+
+/* Додаємо відступи між плашками заголовків */
+.modern-table thead {
+  display: table-header-group;
+  margin-bottom: 12px;
+}
+
+/* Стиль рядків */
+.modern-table tbody tr {
+  background-color: var(--table-row-bg);
+  transition: 0.2s;
+  box-shadow: var(--shadow-inset-light);
+}
+
+.modern-table td {
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--black-main);
+  border: none;
+  border-bottom: 1px solid var(--border-divider);
+
+}
+
+/* Розміри колонок */
+.modern-table th:nth-child(1),
+.modern-table td:nth-child(1) {
+  width: 5%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.modern-table th:nth-child(2),
+.modern-table td:nth-child(2) {
+  width: 18%;
+}
+
+.modern-table th:nth-child(3),
+.modern-table td:nth-child(3) {
+  width: 33%;
+}
+
+.modern-table th:nth-child(4),
+.modern-table td:nth-child(4) {
+  width: 18%;
+}
+
+.modern-table th:nth-child(5),
+.modern-table td:nth-child(5) {
+  width: 16%;
+}
+
+.modern-table th:nth-child(6),
+.modern-table td:nth-child(6) {
+  width: 10%;
+}
+
+/* Стилізація чекбоксів */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gray-medium);
+}
