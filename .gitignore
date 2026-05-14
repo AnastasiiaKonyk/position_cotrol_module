@@ -14,3 +14,11 @@ packages/
 appsettings.json
 !appsettings.json
 .env
+
+bin/
+obj/
+
+appsettings.Development.json
+
+*.log
+.DS_Store
