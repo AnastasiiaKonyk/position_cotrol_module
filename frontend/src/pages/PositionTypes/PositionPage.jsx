@@ -119,9 +119,7 @@ const PositionPage = () => {
 
       {loading ? (
         <p>Завантаження даних...</p>
-      ) : (
-        <Table columns={columns} data={positions} />
-      )}
+      ) : (      
         <Table 
           columns={columns} 
           data={positions}
