@@ -1,4 +1,6 @@
-﻿namespace backend.Position.Module.BLL.Dtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.Position.Module.BLL.Dtos
 {
     public class CreateTypePosadDto
     {

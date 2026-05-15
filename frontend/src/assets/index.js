@@ -7,6 +7,7 @@ import SearchIcon from './search-icon.svg';
 import AccountIcon from './account-icon.svg';
 import Logo from './logo.svg';
 import SunIcon from './sun-icon.svg';
+import Menu from './burger-icon.svg';
 // import MoonIcon from './moon-icon.svg';
 
 
@@ -22,5 +23,6 @@ export const Icons = {
   Account: AccountIcon,
   Logo: Logo,
   Sun: SunIcon,
+  Menu: Menu,
   // Moon: MoonIcon, 
 };

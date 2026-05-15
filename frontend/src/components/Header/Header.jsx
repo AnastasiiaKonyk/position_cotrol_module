@@ -18,11 +18,15 @@ const Header = ({ userName = 'Користувач' }) => {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo */}
-        <div className="header-logo">
-          <img src={Icons.Logo} alt="Berta Group" className="logo-img" />
+        <div className="header-left">
+          {/* <button className="header-btn menu-btn" title="Меню">
+            <img src={Icons.Menu} alt="Меню" className="icon" />
+          </button> */}
+          {/* Logo */}
+          <div className="header-logo">
+            <img src={Icons.Logo} alt="Berta Group" className="logo-img" />
+          </div>
         </div>
-
         {/* Right Section */}
         <div className="header-right">
           {/* Theme Toggle */}
@@ -41,8 +45,11 @@ const Header = ({ userName = 'Користувач' }) => {
               onClick={toggleMenu}
               title="Меню користувача"
             >
-              <img src={Icons.Account} alt="Профіль" className="icon" />
               <span className="user-name">{userName}</span>
+              <div className="account-icon-wrapper">
+              <img src={Icons.Account} alt="Профіль" className="iconAccount" />
+              </div>
+
             </button>
 
             {/* Dropdown Menu */}
