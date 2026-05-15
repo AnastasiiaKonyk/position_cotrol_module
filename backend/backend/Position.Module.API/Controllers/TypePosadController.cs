@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using backend.Position.Module.BLL.Services.Interfaces;
-using System.Security.Authentication;
 using backend.Position.Module.BLL.Dtos;
 
 namespace backend.Position.Module.API.Controllers
@@ -19,10 +18,7 @@ namespace backend.Position.Module.API.Controllers
             _typePosadService = typePosadService;
         }
 
-        // -----------------------------------------------------------------
-        // 1. ОТРИМАННЯ ПОСАД З ПАГІНАЦІЄЮ ТА СОРТУВАННЯМ
-        // GET api/typeposad
-        // -----------------------------------------------------------------
+        // Отримання посад з пагінацією, сортуванням та фільтрацією
         [HttpGet]
         [ProducesResponseType(typeof(object), 200)]
         [ProducesResponseType(500)]
@@ -49,10 +45,7 @@ namespace backend.Position.Module.API.Controllers
             }
         }
 
-        // -----------------------------------------------------------------
-        // 2. ОТРИМАННЯ ПОСАДИ ЗА ID
-        // GET api/typeposad/5
-        // -----------------------------------------------------------------
+        // Отримання посади за ідентифікатором
         [HttpGet("{id:int}", Name = "GetById")]
         [ProducesResponseType(typeof(TypePosadDto), 200)]
         [ProducesResponseType(404)]
@@ -75,12 +68,9 @@ namespace backend.Position.Module.API.Controllers
                 return StatusCode(500, "Internal server error.");
             }
         }
-        
 
-        // -----------------------------------------------------------------
-        // 3. СТВОРЕННЯ ПОСАДИ
-        // POST api/typeposad
-        // -----------------------------------------------------------------
+
+        // Створення посади
         [HttpPost]
         [ProducesResponseType(typeof(TypePosadDto), 201)]
         [ProducesResponseType(400)]
@@ -95,7 +85,6 @@ namespace backend.Position.Module.API.Controllers
 
                 var createdId = await _typePosadService.CreateAsync(dto);
 
-                // Отримуємо створений об'єкт для повернення результату
                 var createdObject = await _typePosadService.GetByIdAsync(createdId);
 
                 return CreatedAtAction(nameof(GetById), new { id = createdId }, createdObject);
@@ -107,10 +96,7 @@ namespace backend.Position.Module.API.Controllers
             }
         }
 
-        // -----------------------------------------------------------------
-        // 4. ОНОВЛЕННЯ ПОСАДИ
-        // PUT api/typeposad/5
-        // -----------------------------------------------------------------
+        // Оновлення посади
         [HttpPut("{id:int}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -136,10 +122,7 @@ namespace backend.Position.Module.API.Controllers
             }
         }
 
-        // -----------------------------------------------------------------
-        // 5. ЗМІНА СТАТУСУ (АКТИВАЦІЯ/АРХІВАЦІЯ)
-        // PATCH api/typeposad/5/status?active=true
-        // -----------------------------------------------------------------
+        // Зміна статусу посади (активна/архівна)
         [HttpPatch("{id:int}/status")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
