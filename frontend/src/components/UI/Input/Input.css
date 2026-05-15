@@ -31,7 +31,7 @@
   box-sizing: border-box;
   justify-content: space-between;
   box-shadow: var(--shadow-inset-light);
-  color: var(--text-on-input);
+  color: var(--input-text);
 }
 
 /* .input-field::placeholder {

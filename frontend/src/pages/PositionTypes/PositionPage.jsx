@@ -36,6 +36,10 @@ const PositionPage = () => {
     fetchPositions();
   }, []);
 
+  const [isEdit, setIsEdit] = useState(false);
+  const [editData, setEditData] = useState(null);
+
+  // Визначаємо колонки
   const columns = [
     { header: '№', key: 'id' },
     { header: 'Назва', key: 'name' },
@@ -50,8 +54,36 @@ const PositionPage = () => {
   ];
 
   const handleCreatePosition = (formData) => {
-    console.log('Нова посада:', formData);
+    if (isEdit) {
+      console.log('Редаговано посаду:', formData);
+      setIsEdit(false);
+      setEditData(null);
+    } else {
+      console.log('Нова посада:', formData);
+    }
     setIsModalOpen(false);
+  };
+
+  const handleEdit = (row) => {
+    setEditData(row);
+    setIsEdit(true);
+    setIsModalOpen(true);
+  };
+
+  const handleArchive = (row) => {
+    console.log('Архівувано:', row);
+  };
+
+  // Тимчасові тестові дані (поки бекенд готується)
+  const testData = [
+    { id: 1, name: 'Адміністратор', fullName: 'Адміністратор систем', accountingType: 'Фактичний', category: 'Стандарт', activeAd: true },
+    { id: 2, name: 'Бухгалтер', fullName: 'Старший бухгалтер', accountingType: 'Бухгалтерський', category: 'Стандарт', activeAd: false },
+  ];
+
+  const handleOpenCreateModal = () => {
+    setIsEdit(false);
+    setEditData(null);
+    setIsModalOpen(true);
   };
 
   return (
@@ -71,7 +103,7 @@ const PositionPage = () => {
             text="Створити" 
             variant="primary" 
             icon={Icons.Add}
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleOpenCreateModal}
           />
         </div>
       </div>
@@ -87,6 +119,21 @@ const PositionPage = () => {
         onClose={() => setIsModalOpen(false)}
         onCreate={handleCreatePosition}
       />
+        <Table 
+          columns={columns} 
+          data={testData}
+          onEdit={handleEdit}
+          onArchive={handleArchive}
+        />
+
+        <CreatePositionModal 
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onCreate={handleCreatePosition}
+          isEdit={isEdit}
+          editData={editData}
+        />
+      
     </div>
   );
 };

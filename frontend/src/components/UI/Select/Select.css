@@ -1,9 +1,9 @@
-:root {
+/* :root {
   --border: var(--border-light);
   --input-bg: var(--input-bg);
   --input-text: var(--gray-text);
   --text-on-input: var(--text-on-input);
-}
+} */
 
 .select-group {
   margin-bottom: 20px;
@@ -32,7 +32,7 @@
   border: 1px solid var(--border);
   background-color: var(--input-bg);
   font-size: 14px;
-  color: var(--input-text);
+  color: var(--text-main);
   transition: 0.2s;
   font-family: inherit;
   box-sizing: border-box;
@@ -83,11 +83,6 @@
   align-items: center;
   justify-content: center;
   transition: box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1); */
-}
-
-/* Базовий стан (сірий текст, поки нічого не вибрано) */
-.select-field {
-  color: var(--input-text); 
 }
 
 .select-field.has-value {

@@ -10,12 +10,19 @@
 }
 
 .header-container {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 /* Logo */
@@ -34,7 +41,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 /* Buttons */
@@ -44,8 +51,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  padding: 0px;
   border-radius: 20px;
   transition: 0.2s;
   color: var(--text-on-input);
@@ -57,52 +63,86 @@
   background-color: var(--input-bg);
 }
 
-.header-btn:active {
-  background-color: var(--border-light);
-}
-
-/* Icons */
 .header-btn .icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 
-/* Theme Toggle */
 .theme-toggle {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border-radius: 50%;
+  width: 68px;
+  height: 26px;
+  padding: 5px 8px;
+  border-radius: 16px;
+  background-color: var(--bg-color);
+  box-shadow: var(--shadow-inset-medium);
+  cursor: pointer;
 }
 
-/* Account Button */
+.theme-toggle .icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 .account-btn {
   position: relative;
 }
 
+.iconAccount{
+  width: 36px;
+  height: 36px;
+}
+
+.icon img {
+  width: 20px;
+  height: 20px;
+}
+
+
 .user-name {
   font-weight: 500;
   color: var(--text-on-input);
-  max-width: 120px;
+  /* max-width: 120px; */
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* User Menu */
-.user-menu {
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  margin-right: 15px;
+  box-shadow: var(--shadow-inset-medium);
+  padding: 6px 40px 6px 8px;
+  border-radius: 16px;
+  display: inline-block;
   position: relative;
 }
 
+.account-icon-wrapper{
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--table-header-bg);
+  box-shadow: var(--shadow-inset-medium);
+   position: absolute;
+  right: 5px;
+  color: var(--gray-text);
+  pointer-events: none;
+  stroke-width: 2;
+
+  border:none;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
 /* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: 75%;
+  right: 20px;
   background-color: var(--white-light);
   border: 1px solid var(--border-light);
   border-radius: 12px;
@@ -160,15 +200,17 @@
   margin: 4px 0;
 }
 
+/* .account-btn-wrapper{
+  width: 140px;
+} */
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {
     padding: 0 16px;
   }
 
-  .header-container {
-    gap: 16px;
-  }
+ 
 
   .header-right {
     gap: 12px;

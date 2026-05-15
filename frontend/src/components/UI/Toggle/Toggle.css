@@ -48,5 +48,5 @@
 
 .toggle-label {
   font-size: 14px;
-  color: var(--text-toggle);
+  color: var(--text-on-input);
 }
