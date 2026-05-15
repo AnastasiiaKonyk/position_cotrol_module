@@ -3,6 +3,7 @@ import api from '../../interceptors/auth.interceptor';
 import { setupAutoLogin } from '../../services/authService';
 import { status_labels, category_labels } from './PositionPageEnums';
 
+// import GroupButton from '../../components/UI/GroupButton/Button';
 import CreateButton from '../../components/UI/Buttons/CreateButton/Button';
 import Table from '../../components/Table/Table';
 import CreatePositionModal from '../../components/Modals/CreatePositionModal';
@@ -18,28 +19,27 @@ const PositionPage = () => {
   const [positions, setPositions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchPositions = async () => {
-    try {
-        setLoading(true);
-        await setupAutoLogin(); 
-
-        const response = await api.get('/TypePosad');
-        setPositions(response.data.items || response.data);
-    } catch (error) {
-        console.error("Помилка:", error);
-    } finally {
-        setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPositions();
-  }, []);
-
   const [isEdit, setIsEdit] = useState(false);
   const [editData, setEditData] = useState(null);
 
   // Визначаємо колонки
+  const fetchPositions = async () => {
+      try {
+        setLoading(true);
+        await setupAutoLogin(); 
+        const response = await api.get('/TypePosad');
+        setPositions(response.data.items || response.data);
+      } catch (error) {
+        console.error("Помилка при завантаженні:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      fetchPositions();
+    }, []);
+
   const columns = [
     { header: '№', key: 'id' },
     { header: 'Назва', key: 'name' },
@@ -74,11 +74,11 @@ const PositionPage = () => {
     console.log('Архівувано:', row);
   };
 
-  // Тимчасові тестові дані (поки бекенд готується)
-  const testData = [
-    { id: 1, name: 'Адміністратор', fullName: 'Адміністратор систем', accountingType: 'Фактичний', category: 'Стандарт', activeAd: true },
-    { id: 2, name: 'Бухгалтер', fullName: 'Старший бухгалтер', accountingType: 'Бухгалтерський', category: 'Стандарт', activeAd: false },
-  ];
+  // // Тимчасові тестові дані (поки бекенд готується)
+  // const testData = [
+  //   { id: 1, name: 'Адміністратор', fullName: 'Адміністратор систем', accountingType: 'Фактичний', category: 'Стандарт', activeAd: true },
+  //   { id: 2, name: 'Бухгалтер', fullName: 'Старший бухгалтер', accountingType: 'Бухгалтерський', category: 'Стандарт', activeAd: false },
+  // ];
 
   const handleOpenCreateModal = () => {
     setIsEdit(false);
@@ -93,6 +93,15 @@ const PositionPage = () => {
           <Search />
         </div>
         <div className="actions-section">
+          {/* <label className="archive-label">
+            <input 
+              type="checkbox" 
+              checked={showArchived} 
+              onChange={() => setShowArchived(!showArchived)} 
+            />
+            Показувати архівні посади
+          </label> */}
+
           <Toggle 
             isOn={showArchived} 
             handleToggle={() => setShowArchived(!showArchived)} 
@@ -113,26 +122,21 @@ const PositionPage = () => {
       ) : (
         <Table columns={columns} data={positions} />
       )}
+        <Table 
+          columns={columns} 
+          data={positions}
+          onEdit={handleEdit}
+          onArchive={handleArchive}
+        />
+      )}
 
       <CreatePositionModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onCreate={handleCreatePosition}
+        isEdit={isEdit}
+        editData={editData}
       />
-        <Table 
-          columns={columns} 
-          data={testData}
-          onEdit={handleEdit}
-          onArchive={handleArchive}
-        />
-
-        <CreatePositionModal 
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onCreate={handleCreatePosition}
-          isEdit={isEdit}
-          editData={editData}
-        />
       
     </div>
   );
