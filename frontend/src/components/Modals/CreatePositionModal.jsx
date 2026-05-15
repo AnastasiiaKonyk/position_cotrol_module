@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icons } from '../../assets';
 import Input from '../UI/Input/Input';
 import Select from '../UI/Select/Select';
 import Button from '../UI/Buttons/ButtonGroup/ButtonGroup';
 import './CreatePositionModal.css';
 
-const CreatePositionModal = ({ isOpen, onClose, onCreate }) => {
+const CreatePositionModal = ({ isOpen, onClose, onCreate, isEdit = false, editData = null }) => {
   const [formData, setFormData] = useState({
     name: '',
     fullName: '',
@@ -13,6 +13,26 @@ const CreatePositionModal = ({ isOpen, onClose, onCreate }) => {
     category: '',
     activeAd: false,
   });
+
+  useEffect(() => {
+    if (isEdit && editData) {
+      setFormData({
+        name: editData.name || '',
+        fullName: editData.fullName || '',
+        accountingType: editData.accountingType || '',
+        category: editData.category || '',
+        activeAd: editData.activeAd || false,
+      });
+    } else {
+      setFormData({
+        name: '',
+        fullName: '',
+        accountingType: '',
+        category: '',
+        activeAd: false,
+      });
+    }
+  }, [isEdit, editData, isOpen]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -22,7 +42,7 @@ const CreatePositionModal = ({ isOpen, onClose, onCreate }) => {
     });
   };
 
-  const handleCreate = () => {
+  const handleSubmit = () => {
     onCreate(formData);
     setFormData({
       name: '',
@@ -35,11 +55,14 @@ const CreatePositionModal = ({ isOpen, onClose, onCreate }) => {
 
   if (!isOpen) return null;
 
+  const title = isEdit ? 'Редагування типу посади' : 'Створення типу посади';
+  const buttonText = isEdit ? 'Зберегти' : 'Створити';
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>Створення типу посади</h2>
+          <h2>{title}</h2>
           <button className="modal-close" onClick={onClose}>
             <img src={Icons.Close} alt="close" />
           </button>
@@ -97,9 +120,9 @@ const CreatePositionModal = ({ isOpen, onClose, onCreate }) => {
 
           <div className="modal-footer">
             <Button 
-              text="Створити"
+              text={buttonText}
               variant="primary"
-              onClick={handleCreate}
+              onClick={handleSubmit}
             />
             <Button 
               text="Скасувати"
