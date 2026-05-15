@@ -97,3 +97,68 @@
   height: 18px;
   accent-color: var(--gray-medium);
 }
+
+/* Context Menu */
+.context-menu {
+  position: fixed;
+  background-color: var(--white-light);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  z-index: 1000;
+  animation: slideUp 0.15s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.context-menu-item {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  color: var(--text-on-input);
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.context-menu-item:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.context-menu-item:hover {
+  background-color: var(--input-bg);
+}
+
+.context-menu-item.archive {
+  color: var(--accent-red);
+  border-radius: 0 0 12px 12px;
+}
+
+.context-menu-item.archive:hover {
+  background-color: rgba(227, 30, 36, 0.05);
+}
+
+.context-menu-item.edit:hover {
+  background-color: rgba(79, 92, 101, 0.05);
+}
+
+.context-menu-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  /* margin: 4px 0; */
+}
