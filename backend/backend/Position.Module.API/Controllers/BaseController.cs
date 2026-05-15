@@ -6,8 +6,8 @@ using System.Security.Authentication;
 namespace backend.Position.Module.API.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public abstract class BaseController<T> : Controller
     {
         protected readonly IMapper _mapper;
