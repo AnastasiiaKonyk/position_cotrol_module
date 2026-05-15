@@ -41,17 +41,17 @@ const PositionPage = () => {
     }, []);
 
   const columns = [
-     { header: '№', key: 'id' },
-     { header: 'Назва', key: 'name' },
-     { header: 'Повна назва', key: 'nameFull' },
-     { header: 'Тип обліку', key: 'status', render: (val) => status_labels[val] },
-     { header: 'Категорія', key: 'category', render: (val) => category_labels[val] },
-     { 
-       header: 'Активація AD', 
-       key: 'activeAd', 
-       render: (val) => <input type="checkbox" checked={val} readOnly className="custom-checkbox"/> 
-     },
-   ];
+    { header: '№', key: 'id' },
+    { header: 'Назва', key: 'name' },
+    { header: 'Повна назва', key: 'nameFull' },
+    { header: 'Тип обліку', key: 'status', render: (val) => status_labels[val] },
+    { header: 'Категорія', key: 'category', render: (val) => category_labels[val] },
+    { 
+      header: 'Активація AD', 
+      key: 'activeAd', 
+      render: (val) => <input type="checkbox" checked={val} readOnly className="custom-checkbox"/> 
+    },
+  ];
 
   const handleCreatePosition = (formData) => {
     if (isEdit) {
@@ -90,10 +90,7 @@ const PositionPage = () => {
     <div className="page-wrapper">
       <div className="top-bar">
         <div className="title-section">
-          {/* <h1>Типи посад</h1>
-          <img src={Icons.Team} alt="team" />        */}
-          <Search/>
-
+          <Search />
         </div>
         <div className="actions-section">
           {/* <label className="archive-label">
@@ -119,9 +116,12 @@ const PositionPage = () => {
           />
         </div>
       </div>
+
       {loading ? (
         <p>Завантаження даних...</p>
       ) : (
+        <Table columns={columns} data={positions} />
+      )}
         <Table 
           columns={columns} 
           data={positions}
@@ -141,4 +141,5 @@ const PositionPage = () => {
     </div>
   );
 };
+
 export default PositionPage;
