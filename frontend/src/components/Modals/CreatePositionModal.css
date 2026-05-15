@@ -10,7 +10,6 @@
   justify-content: center;
   z-index: 1000;
   gap: 8px;
-  angle: 0 deg;
   opacity: 1;
   padding: 16px;
 border-radius: Corner/Large;
@@ -76,7 +75,6 @@ border-radius: Corner/Large;
   width: 508px;
   height: 460px;
   gap: 24px;
-  angle: 0 deg;
   opacity: 1;
   padding: 16px;
   border-radius: 16px;
